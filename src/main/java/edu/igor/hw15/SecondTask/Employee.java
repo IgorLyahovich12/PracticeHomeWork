@@ -1,6 +1,6 @@
 package edu.igor.hw15.SecondTask;
 
-public class Employee {
+public abstract class Employee {
     protected String name;
     protected String ID;
     protected String position;
@@ -14,8 +14,6 @@ public class Employee {
         this.phoneNumber = phoneNumber;
     }
 
-
-
     // Додатковий метод
     public void printEmployeeInfo() {
         System.out.println("Name: " + name);
@@ -24,8 +22,5 @@ public class Employee {
         System.out.println("Phone Number: " + phoneNumber);
     }
 
-    public double calculateMoney() {
-        return 0;
-    }
+    public abstract double calculateMoney(); // Абстрактний метод для розрахунку заробітної плати
 }
-
