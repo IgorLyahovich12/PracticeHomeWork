@@ -9,7 +9,6 @@ public class DesktopComputer extends Computer implements Store {
     public DesktopComputer(String brand, String model, double price) {
         super(brand, model, price);
     }
-
     @Override
     public void getComputerInfo() {
         System.out.println("Настільний комп'ютер: Бренд - " + brand + ", Модель - " + model + ", Ціна - " + price);
@@ -19,6 +18,8 @@ public class DesktopComputer extends Computer implements Store {
         System.out.println("Зберігання: " + new StorageDevice("SSD", 512).type + ", " + new StorageDevice("HDD", 2000).capacity + " ГБ");
         System.out.println("Материнська плата: " + new Motherboard("Intel Z490").chipset);
     }
+
+
 
     @Override
     public void selectAccessories(double budget) {
@@ -45,31 +46,20 @@ public class DesktopComputer extends Computer implements Store {
         }
 
         System.out.println("Підібрані комплектуючі для Комп'ютера з бюджетом " + budget + ":");
-        for (Object accessory : selectedAccessories) {
-            if (accessory instanceof String) {
-                System.out.println(accessory);
-            } else if (accessory instanceof Printer) {
-                System.out.println("Принтер " + ((Printer) accessory).getModel());
-            } else if (accessory instanceof Scanner) {
-                System.out.println("Сканер " + ((Scanner) accessory).getModel());
-            } else if (accessory instanceof Router) {
-                System.out.println("Роутер " + ((Router) accessory).getModel());
-            }
-        }
-    }
 
-    @Override
-    public void buyLaptop() {
-        System.out.println("Покупка ноутбука");
+
     }
     @Override
     public void buyComputer() {
-        System.out.println("Покупка комп'ютера");
+        System.out.println("Покупка комп'ютера,з такими характеристиками:");
+        getComputerInfo();
     }
-
     @Override
     public void buyAccessories() {
-        System.out.println("Покупка комплектуючих");
+        System.out.println("Покупка комплектуючих для комп'ютера");
+        for (String accessory : selectedAccessories) {
+            System.out.println(accessory);
+        }
     }
 
 }

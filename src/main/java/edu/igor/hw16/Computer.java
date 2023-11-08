@@ -12,7 +12,6 @@ public abstract class Computer {
         this.model = model;
         this.price = price;
     }
-
     // Абстрактний метод для отримання інформації щодо характеристик комп'ютера
     public abstract void getComputerInfo();
 

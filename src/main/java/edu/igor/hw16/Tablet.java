@@ -37,24 +37,21 @@ public class Tablet extends Computer implements Store {
             selectedAccessories.add("Підставка");
         }
 
-        System.out.println("Підібрані комплектуючі для планшета з бюджетом " + budget + ":");
-        for (String accessory : selectedAccessories) {
-            System.out.println(accessory);
-        }
-    }
-
-    @Override
-    public void buyLaptop() {
-        System.out.println("Покупка ноутбука");
     }
 
     @Override
     public void buyComputer() {
-        System.out.println("Покупка комп'ютера");
+        System.out.println("Покупка планшета,з такими характеристиками:");
+        getComputerInfo();
     }
 
     @Override
     public void buyAccessories() {
-        System.out.println("Покупка комплектуючих");
+        System.out.println("Покупка комплектуючих для планшета");
+        for (String accessory : selectedAccessories) {
+            System.out.println(accessory);
+        }
+
+
     }
 }

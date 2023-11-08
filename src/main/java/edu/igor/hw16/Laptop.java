@@ -39,24 +39,20 @@ public class Laptop extends Computer implements Store {
             selectedAccessories.add("Зовнішній монітор");
         }
 
-        System.out.println("Підібрані комплектуючі для ноутбука з бюджетом " + budget + ":");
-        for (String accessory : selectedAccessories) {
-            System.out.println(accessory);
-        }
     }
-
-    @Override
-    public void buyLaptop() {
-        System.out.println("Покупка ноутбука");
-    }
-
     @Override
     public void buyComputer() {
-        System.out.println("Покупка комп'ютера");
+        System.out.println("Покупка ноутбука,з такими характеристиками:");
+        getComputerInfo();
     }
 
     @Override
     public void buyAccessories() {
-        System.out.println("Покупка комплектуючих");
+        System.out.println("Покупка комплектуючих для ноутбука ");
+        for (String accessory : selectedAccessories) {
+            System.out.println(accessory);
+        }
+
+
     }
 }
