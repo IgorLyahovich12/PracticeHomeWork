@@ -1,6 +1,6 @@
 package edu.igor.hw18;
 
-public class NumberSearchImpl<T extends Number & Comparable<T>> implements MinMaxFinder<T> {
+public class NumberSearchImpl<T extends Number & Comparable<? super T>> implements MinMaxFinder<T> {
     @Override
     public T findMin(T[] array) {
         if (array == null || array.length == 0) {
