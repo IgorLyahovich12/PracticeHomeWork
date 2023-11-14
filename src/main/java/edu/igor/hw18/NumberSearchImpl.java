@@ -1,36 +1,33 @@
 package edu.igor.hw18;
-public class NumberSearchImpl implements NumberSearch<Integer> {
+
+public class NumberSearchImpl<T extends Number & Comparable<T>> implements MinMaxFinder<T> {
     @Override
-    public Integer findMax(Integer[] array) {
+    public T findMin(T[] array) {
         if (array == null || array.length == 0) {
             return null;
         }
 
-        Integer max = array[0];
-        for (int i = 1; i < array.length; i++) {
-            Integer element = array[i];
-            if (element > max) {
-                max = element;
-            }
-        }
-
-        return max;
-    }
-
-    @Override
-    public Integer findMin(Integer[] array) {
-        if (array == null || array.length == 0) {
-            return null;
-        }
-
-        Integer min = array[0];
-        for (int i = 1; i < array.length; i++) {
-            Integer element = array[i];
-            if (element < min) {
+        T min = array[0];
+        for (T element : array) {
+            if (element.compareTo(min) < 0) {
                 min = element;
             }
         }
-
         return min;
+    }
+
+    @Override
+    public T findMax(T[] array) {
+        if (array == null || array.length == 0) {
+            return null;
+        }
+
+        T max = array[0];
+        for (T element : array) {
+            if (element.compareTo(max) > 0) {
+                max = element;
+            }
+        }
+        return max;
     }
 }
