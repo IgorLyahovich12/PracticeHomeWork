@@ -19,17 +19,15 @@ public final class Student extends Human {
 
         if (TheResultOfTheEntranceExam >= 100 && TheResultOfTheEntranceExam < 160) {
             return "Студент навчається на контракті.";
-
-        } else if (TheResultOfTheEntranceExam >= 160 && TheResultOfTheEntranceExam <= 200) {
-            return "Студент навчається на бюджеті.";
-
-        } else {
-            return "Недійсний результат вступного екзамену.";
         }
-
+            if (TheResultOfTheEntranceExam >= 160 && TheResultOfTheEntranceExam <= 200) {
+                return "Студент навчається на бюджеті.";
+            }
+        return "Недійсний результат вступного екзамену.";
+        }
     }
 
-}
+
 
 
 
