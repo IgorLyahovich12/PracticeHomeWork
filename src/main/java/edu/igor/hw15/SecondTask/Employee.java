@@ -5,7 +5,6 @@ public abstract class Employee {
     protected String ID;
     protected String position;
     protected long phoneNumber;
-
     // Конструктор
     public Employee(String name, String ID, String position, long phoneNumber) {
         this.name = name;
