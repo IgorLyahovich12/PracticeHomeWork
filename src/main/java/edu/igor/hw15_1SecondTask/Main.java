@@ -3,9 +3,9 @@ package edu.igor.hw15_1SecondTask;
 public class Main {
     public static void main(String[] args) {
         // Створення об'єктів різних типів працівників
-        HourlyEmployee hourlyEmployee = new HourlyEmployee("John Doe", "001", "Hourly Worker", 1234567890, 15.0, 40);
-        SalariedEmployee salariedEmployee = new SalariedEmployee("Alice Smith", "002", "Manager", 876543210, 3000.0);
-        CommissionEmployee commissionEmployee = new CommissionEmployee("Bob Johnson", "003", "Sales Rep", 555555555, 50000.0, 0.05);
+        Employee hourlyEmployee = new HourlyEmployee("John Doe", "001", "Hourly Worker", 1234567890, 15.0, 40);
+        Employee salariedEmployee = new SalariedEmployee("Alice Smith", "002", "Manager", 876543210, 3000.0);
+        Employee commissionEmployee = new CommissionEmployee("Bob Johnson", "003", "Sales Rep", 555555555, 50000.0, 0.05);
 
         // Виведення інформації про працівників
         System.out.println("Hourly Employee:");
