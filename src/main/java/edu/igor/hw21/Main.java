@@ -40,8 +40,6 @@ public class Main {
         System.out.println("Built Sentence: " + builtSentence);
     }
 
-
-    // Зроблено методи приватними, оскільки вони використовуються лише всередині класу
     private static int sum(int a, int b) {
         return a + b;
     }
