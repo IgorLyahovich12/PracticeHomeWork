@@ -13,8 +13,8 @@ package edu.igor.hw19.Ex7;
 import java.util.List;
 
 public class Print<T extends Number> {
-    public void print(List<T> list) {
-        for (T n : list)
+    public static void print(List<? extends Number> list) {
+        for (Number n : list)
             System.out.println(n + " ");
         System.out.println();
     }

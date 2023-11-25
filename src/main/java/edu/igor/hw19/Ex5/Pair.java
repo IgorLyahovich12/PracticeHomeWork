@@ -1,26 +1,24 @@
 package edu.igor.hw19.Ex5;
 
-public class Pair {
-    public Pair(Object key, Object value) {
+public class Pair<K,V> {
+    public Pair(K key, V value) {
         this.key = key;
         this.value = value;
     }
-    public Object getKey() {
+    public K getKey() {
         return key;
     }
 
-    public Object getValue() {
+    public V getValue() {
         return value;
     }
 
-    public void setKey(Object key) {
-        this.key = key;
-    }
 
-    public void setValue(Object value) {
+
+    public void setValue(V value) {
         this.value = value;
     }
 
-    private Object key;
-    private Object value;
+    private K key;
+    private V value;
 }
