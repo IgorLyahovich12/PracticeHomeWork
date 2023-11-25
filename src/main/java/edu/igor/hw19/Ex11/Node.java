@@ -1,11 +1,18 @@
 package edu.igor.hw19.Ex11;
 
-//public class Node<T> implements Comparable<T>{
-//   public int compareTo(T obg) {
-/* Проблема полягає в тому, що інтерфейс Comparable<T> реалізований у класі Node<T>, а не самому T. */
-//Node реалізує Comparable<Node<T>>, оскільки ми порівнюємо екземпляри Node.
+public class Node<T extends Comparable<T>> implements Comparable<T> {
+   private T value;
 
-   //..
-   Node<String> node =new Node<>();
-   Comparable<String> comp=node;
+   public Node(T value) {
+      this.value = value;
+   }
 
+   public T getValue() {
+      return value;
+   }
+
+   @Override
+   public int compareTo(T obj) {
+      return this.value.compareTo(obj);
+   }
+}
