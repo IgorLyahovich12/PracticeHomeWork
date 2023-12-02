@@ -56,14 +56,12 @@ public class Main {
         BirthDate birthDateStudent = new BirthDate(10, 3, 2000);
 
         // Створюємо об'єкт класу Student за допомогою другого конструктора
-        Student student1 = new Student("Іван", "Петров", "Олександрович", "Українець", "12345",birthDateStudent, "S54321", "Математика", 190, 2);
+        Student student1 = new Student("Іван", "Петров", "Олександрович", "Українець", "12345",birthDateStudent, "S54321", "Математика", 190);
 
         System.out.println("Інформація про студента 1:");
         System.out.println(student1.getStudentInfo());
         System.out.println("Статус вступу: " + student1.getEnrollmentStatus());
-        System.out.println("Поточний курс: " + student1.getCourse());
-        System.out.println("Кількість курсів до закінчення бакалаврату: " + student1.getBachelorCoursesLeft());
-        System.out.println("Кількість курсів до закінчення магістратури: " + student1.getMasterCoursesLeft());
+
     }
 }
 
