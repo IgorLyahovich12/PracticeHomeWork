@@ -1,4 +1,6 @@
-package edu.igor.hw21;
+package org.example.hw21;
+
+import java.util.Objects;
 
 public class Main {
     public static void main(String[] args) {
@@ -54,10 +56,9 @@ public class Main {
 
     private static int divide(int a, int b) {
         // Додано перевірку на можливість ділення на 0
-        if (b != 0) {
-            return a / b;
-        } else {
+        if(Objects.isNull(b)) {
             throw new ArithmeticException("Cannot divide by zero.");
         }
+        return a/b;
     }
 }

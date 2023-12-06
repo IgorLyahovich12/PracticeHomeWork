@@ -1,4 +1,4 @@
-package edu.igor.hw21;
+package org.example.hw21;
 
 @FunctionalInterface
 interface ExpressionPrinter<T> {
