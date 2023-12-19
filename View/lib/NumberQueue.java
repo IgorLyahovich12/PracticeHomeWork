@@ -48,12 +48,15 @@ private int index;
 
         @Override
         public boolean hasNext() {
+            if (Objects.isNull(current)) {
+                throw new NoSuchElementException("list is empty");
+            }
             return Objects.nonNull(current.next);
         }
 
         @Override
         public T next() {
-            if (index==0) {
+            if (index == 0) {
                 index++;
                 return current.value;
             }
@@ -78,9 +81,9 @@ private int index;
     private boolean isEmpty() {
         return size == 0;
     }
-    private  void  checkListIsEmpty(){
-        if(isEmpty()){
-            System.out.println("list is empty");
+    private void checkListIsEmpty() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Queue is empty");
         }
     }
 
@@ -113,12 +116,17 @@ private int index;
         checkListIsEmpty();
         Object[] result = new Object[size];
         Node<T> temp = front;
+
         for (int i = 0; i < size; i++) {
+            if (temp == null) {
+                System.out.println("Debug: Unexpected null node at index " + i);
+                throw new IllegalStateException("Unexpected null node encountered during toArray");
+            }
             result[i] = temp.value;
             temp = temp.next;
         }
-        return result;
 
+        return result;
     }
 
 
@@ -166,9 +174,16 @@ private int index;
         }
         Node<T> current = front;
         for (int i = 0; i < index; i++) {
+            if (current == null) {
+                throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+            }
             current = current.next;
         }
-        current.value = value;
+        if (current != null) {
+            current.value = value;
+        } else {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
     }
     @Override
     public boolean equals(Object o) {
