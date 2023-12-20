@@ -24,7 +24,7 @@ public class Main {
             numberQueue.enqueue(241);
             System.out.println("Initial Queue:");
             System.out.println(" Queue:"+numberQueue);
-            numberQueue.sort();
+           // numberQueue.sort();
             System.out.println("Sort Queue:"+numberQueue);
             System.out.println("Initial Queue:");
             System.out.println(numberQueue);
