@@ -74,6 +74,7 @@ private int index;
         } else {
             rear.next = newNode;
             rear = newNode;
+
         }
         size++;
     }
@@ -140,7 +141,6 @@ private int index;
             return;
         }
         Node<T> current = front;
-        Node<T> previous = null;
         while (current != null) {
             Node<T> next = current.next;
             Node<T> minNode = current;
@@ -170,20 +170,14 @@ private int index;
     @Override
     public void set(int index, T value) {
         if (index < 0 || index >= size) {
-            return;
+           throw new IndexOutOfBoundsException();
         }
         Node<T> current = front;
         for (int i = 0; i < index; i++) {
-            if (current == null) {
-                throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
-            }
             current = current.next;
         }
-        if (current != null) {
-            current.value = value;
-        } else {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
-        }
+        current.value = value;
+
     }
     @Override
     public boolean equals(Object o) {
