@@ -10,6 +10,5 @@
     </parent>
 
     <artifactId>DataModel</artifactId>
-    <packaging>jar</packaging>
 
 </project>
