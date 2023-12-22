@@ -8,9 +8,6 @@ public class Printer {
     }
 
 
-    public String getModel() {
-        return null;
-    }
 
     @Override
     public String toString() {

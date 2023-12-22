@@ -16,7 +16,4 @@ public class Scanner {
                 '}';
     }
 
-    public String getModel() {
-        return null;
-    }
 }

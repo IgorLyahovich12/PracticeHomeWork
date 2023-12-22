@@ -16,7 +16,4 @@ public class Router {
                 '}';
     }
 
-    public String getModel() {
-        return null;
-    }
 }
