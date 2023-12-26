@@ -135,38 +135,7 @@ private int index;
     public int size() {
         return size;
     }
-    @Override
-    public void sort() {
-        if (isEmpty() || size == 1) {
-            return;
-        }
-        Node<T> current = front;
-        while (current != null) {
-            Node<T> next = current.next;
-            Node<T> minNode = current;
-            for (Node<T> temp = current.next; temp != null; temp = temp.next) {
-                if (minNode.value.compareTo(temp.value) > 0) {
-                    minNode = temp;
-                }
-            }
-            if (minNode != current) {
-                if (previous == null) {
-                    front = minNode;
-                } else {
-                    previous.next = minNode;
-                }
 
-                T tempValue = current.value;
-                current.value = minNode.value;
-                minNode.value = tempValue;
-            }
-
-            previous = current;
-            current = next;
-        }
-
-        rear = previous;
-    }
     @Override
     public void set(int index, T value) {
         if (index < 0 || index >= size) {
@@ -179,6 +148,22 @@ private int index;
         current.value = value;
 
     }
+
+    @Override
+    public void sort(Comparator<? super T> c) {
+        List<T> elements = new ArrayList<>();
+        while (!isEmpty()) {
+            elements.add(dequeue());
+        }
+        elements.sort(c);
+        for (T element : elements) {
+            enqueue(element);
+        }
+    }
+
+
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
