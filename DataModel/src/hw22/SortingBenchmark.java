@@ -1,16 +1,19 @@
 package DataModel.src.hw22;
 public class SortingBenchmark {
     public static void runBenchmark(int[] array) {
-        long bubbleSortTime = measureAndPrintTime("Bubble Sort", () -> bubbleSort(array.clone()));
-        long quickSortTime = measureAndPrintTime("Quick Sort", () -> quickSort(array.clone(), 0, array.length - 1));
+        SortingAlgorithm bubbleSortAlgorithm = SortingBenchmark::bubbleSort;
+        SortingAlgorithm quickSortAlgorithm = (arr) -> quickSort(arr, 0, arr.length - 1);
+
+        long bubbleSortTime = measureAndPrintTime(bubbleSortAlgorithm, array.clone());
+        long quickSortTime = measureAndPrintTime(quickSortAlgorithm, array.clone());
 
         String fasterAlgorithm = (bubbleSortTime < quickSortTime) ? "Bubble Sort" : "Quick Sort";
         System.out.println(fasterAlgorithm + " is faster.");
     }
 
-    private static long measureAndPrintTime(String algorithmName, Runnable algorithm) {
+    private static long measureAndPrintTime(SortingAlgorithm algorithm, int[] array) {
         long startTime = System.nanoTime();
-        algorithm.run();
+        algorithm.sort(array);
         long endTime = System.nanoTime();
         return endTime - startTime;
     }
