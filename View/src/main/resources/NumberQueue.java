@@ -20,11 +20,11 @@ public class NumberQueue<T extends Comparable<T>> implements Queue<T> {
                     '}';
         }
     }
-    private Comparator<T> reverseQueueComparator() {
+    public Comparator<T> reverseQueueComparator() {
         return new ReversedQueueComparator();
     }
 
-    private Comparator<T> QueueComparator() {
+    public Comparator<T> QueueComparator() {
         return new QueueComparator();
     }
 
@@ -126,21 +126,24 @@ public class NumberQueue<T extends Comparable<T>> implements Queue<T> {
         return result;
 
     }
-
-
     @Override
     public int size() {
         return size;
     }
+
     @SuppressWarnings("unchecked")
     @Override
-    public void sort(Comparator<? super T> c) {
+    public  void sort(Comparator<? super T> c){
         Object[] elementsArray = toArray();
         Arrays.sort(elementsArray, (Comparator<? super Object>) c);
+        front = rear = null;
+        size = 0;
         for (Object element : elementsArray) {
-            enqueue((T) element);
+           enqueue((T) element);
         }
+
     }
+
     @Override
     public void set(int index, T value) {
         if (index < 0 || index >= size) {
@@ -152,6 +155,8 @@ public class NumberQueue<T extends Comparable<T>> implements Queue<T> {
         }
         current.value = value;
     }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -172,4 +177,5 @@ public class NumberQueue<T extends Comparable<T>> implements Queue<T> {
                 ", size=" + size +
                 '}';
     }
+
 }

@@ -42,6 +42,9 @@ public class Main {
         Object[] array = numberQueue.toArray();
         System.out.println("Array: " + Arrays.toString(array));
 
-
+        numberQueue.sort(numberQueue.QueueComparator());
+        System.out.println("Sort Queue:"+numberQueue);
+        numberQueue.sort(numberQueue.reverseQueueComparator());
+        System.out.println("reverseSort Queue:"+numberQueue);
     }
 }
