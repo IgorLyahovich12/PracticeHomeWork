@@ -1,5 +1,6 @@
 package View.src.main.resources;
 
+import java.util.Comparator;
 
 public interface Queue<T> {
     void enqueue(T element);
@@ -7,9 +8,8 @@ public interface Queue<T> {
     T peek();
     Object[] toArray();
     int size();
-    void sort();
     void set(int index, T value);
-
+    void sort(Comparator<? super T> c);
 
 }
 

@@ -1,6 +1,8 @@
 package View.src.main.resources;
 
 import java.util.Arrays;
+import java.util.Comparator;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -17,8 +19,10 @@ public class Main {
         numberQueue.enqueue(5352);
         numberQueue.enqueue(241);
         System.out.println(" Queue:"+numberQueue);
-numberQueue.sort();
+        numberQueue.sort(Comparator.naturalOrder());
         System.out.println("Sort Queue:"+numberQueue);
+        numberQueue.sort(Comparator.reverseOrder());
+        System.out.println("reverseSort Queue:"+numberQueue);
         System.out.println("Initial Queue:");
         System.out.println(numberQueue);
         numberQueue.set(3,30);
