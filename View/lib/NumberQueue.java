@@ -22,23 +22,14 @@ public class NumberQueue<T extends Comparable<T>> implements Queue<T> {
         @Override
         public String toString() {
             return "Node{" +
-                    "value=" + value +"}"+
-                    "{"+ ", next=" + next +
+                    "value=" + value + "}" +
+                    "{" + ", next=" + next +
                     '}';
         }
     }
-    private Node<T> front;
-    private Node<T> rear;
-    private int size;
 
-    public NumberQueue() {
-        this.front = null;
-        this.rear = null;
-        this.size = 0;
-    }
-
-    private  final class NumberQueueIterator  implements Iterator<T> {
-private int index;
+    private final class NumberQueueIterator implements Iterator<T> {
+        private int index;
         Node<T> current;
 
         public NumberQueueIterator() {
@@ -66,6 +57,17 @@ private int index;
         }
     }
 
+    private Node<T> front;
+    private Node<T> rear;
+    private int size;
+
+    public NumberQueue() {
+        this.front = null;
+        this.rear = null;
+        this.size = 0;
+    }
+
+
     @Override
     public void enqueue(T element) {
         Node<T> newNode = new Node<>(element);
@@ -74,7 +76,6 @@ private int index;
         } else {
             rear.next = newNode;
             rear = newNode;
-
         }
         size++;
     }
@@ -82,9 +83,10 @@ private int index;
     private boolean isEmpty() {
         return size == 0;
     }
+
     private void checkListIsEmpty() {
         if (isEmpty()) {
-            throw new IllegalStateException("Queue is empty");
+            System.out.println("list is empty");
         }
     }
 
@@ -117,51 +119,43 @@ private int index;
         checkListIsEmpty();
         Object[] result = new Object[size];
         Node<T> temp = front;
-
         for (int i = 0; i < size; i++) {
-            if (temp == null) {
-                System.out.println("Debug: Unexpected null node at index " + i);
-                throw new IllegalStateException("Unexpected null node encountered during toArray");
-            }
             result[i] = temp.value;
             temp = temp.next;
         }
-
         return result;
-    }
 
+    }
 
     @Override
     public int size() {
         return size;
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
+    public void sort(Comparator<? super T> c) {
+        Object[] elementsArray = toArray();
+        Arrays.sort(elementsArray, (Comparator<? super Object>) c);
+        front = rear = null;
+        size = 0;
+        for (Object element : elementsArray) {
+            enqueue((T) element);
+        }
+
+    }
+
     @Override
     public void set(int index, T value) {
         if (index < 0 || index >= size) {
-           throw new IndexOutOfBoundsException();
+            return;
         }
         Node<T> current = front;
         for (int i = 0; i < index; i++) {
             current = current.next;
         }
         current.value = value;
-
     }
-
-    @Override
-    public void sort(Comparator<? super T> c) {
-        List<T> elements = new ArrayList<>();
-        while (!isEmpty()) {
-            elements.add(dequeue());
-        }
-        elements.sort(c);
-        for (T element : elements) {
-            enqueue(element);
-        }
-    }
-
-
 
 
     @Override
@@ -185,4 +179,3 @@ private int index;
                 '}';
     }
 }
-
