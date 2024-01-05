@@ -1,6 +1,10 @@
 package org.example.hw16;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Main {
+    private static Logger logger = LoggerFactory.getLogger(Main.class);
     public static void main(String[] args) {
         // Створення ноутбуку і виклик методів
         Laptop laptop = new Laptop("Lenovo", "ThinkPad", 1000);
@@ -19,5 +23,8 @@ public class Main {
         tablet.buyComputer();
         tablet.selectAccessories(1000);
         tablet.buyAccessories();
+
+        logger.debug("Some message");
+
     }
 }
