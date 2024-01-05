@@ -2,7 +2,7 @@ package View.lib;
 
 import java.util.Comparator;
 
-public class ComparableQueue<T extends Comparable<T>> extends NumberQueue<T> {
+public class ComparableQueue<T extends Comparable<T>>  {
     private  final class QueueComparator implements Comparator<T> {
 
         @Override

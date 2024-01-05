@@ -1,8 +1,10 @@
 package View.lib;
 
 import java.util.*;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
-public class NumberQueue<T extends Comparable<T>> implements Queue<T> {
+public class NumberQueue<T extends  Comparable<T>> implements Queue<T> {
 
 
     @Override
@@ -29,30 +31,25 @@ public class NumberQueue<T extends Comparable<T>> implements Queue<T> {
     }
 
     private final class NumberQueueIterator implements Iterator<T> {
+        private Node<T> current = front;
         private int index;
-        Node<T> current;
-
-        public NumberQueueIterator() {
-            this.index = 0;
-            this.current = front;
-        }
 
         @Override
         public boolean hasNext() {
-            if (Objects.isNull(current)) {
-                throw new NoSuchElementException("list is empty");
-            }
-            return Objects.nonNull(current.next);
+          if (Objects.isNull(current)){
+              throw new NoSuchElementException("Queue is empty");
+          }
+          return Objects.nonNull(current.next);
         }
-
         @Override
         public T next() {
             if (index == 0) {
                 index++;
                 return current.value;
             }
+
+
             current = current.next;
-            index++;
             return current.value;
         }
     }
@@ -70,6 +67,10 @@ public class NumberQueue<T extends Comparable<T>> implements Queue<T> {
 
     @Override
     public void enqueue(T element) {
+        if (element == null) {
+            throw new NullPointerException("Cannot enqueue null element.");
+        }
+
         Node<T> newNode = new Node<>(element);
         if (isEmpty()) {
             front = rear = newNode;
@@ -86,15 +87,13 @@ public class NumberQueue<T extends Comparable<T>> implements Queue<T> {
 
     private void checkListIsEmpty() {
         if (isEmpty()) {
-            System.out.println("list is empty");
+            throw new NoSuchElementException("Queue is empty. ");
         }
     }
 
     @Override
     public T dequeue() {
-        if (isEmpty()) {
-            throw new NoSuchElementException("Queue is empty. Cannot dequeue.");
-        }
+        checkListIsEmpty();
 
         Node<T> temp = front;
         if (size == 1) {
@@ -134,21 +133,25 @@ public class NumberQueue<T extends Comparable<T>> implements Queue<T> {
 
     @SuppressWarnings("unchecked")
     @Override
-    public void sort(Comparator<? super T> c) {
-        Object[] elementsArray = toArray();
-        Arrays.sort(elementsArray, (Comparator<? super Object>) c);
-        front = rear = null;
-        size = 0;
-        for (Object element : elementsArray) {
-            enqueue((T) element);
+    public void sort(Comparator<? super T> comparator) {
+        Object[] objects = toArray();
+        Arrays.sort(objects, (Comparator) comparator);
+        for (int i = 0; i < size; i++) {
+            set(i, (T) objects[i]);
         }
 
     }
 
     @Override
+    public Stream<T> stream() {
+        Spliterator<T> spliterator = Spliterators.spliteratorUnknownSize(iterator(), Spliterator.SIZED);
+        return StreamSupport.stream(spliterator, false);
+    }
+
+    @Override
     public void set(int index, T value) {
         if (index < 0 || index >= size) {
-            return;
+            throw new IndexOutOfBoundsException("Index is out of bounds.");
         }
         Node<T> current = front;
         for (int i = 0; i < index; i++) {
