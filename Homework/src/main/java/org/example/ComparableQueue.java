@@ -1,4 +1,4 @@
-package View.lib;
+package org.example;
 
 import java.util.Comparator;
 
