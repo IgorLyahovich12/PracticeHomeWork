@@ -8,6 +8,7 @@ View/target
 !**/src/test/**/target/
 
 ### IntelliJ IDEA ###
+.attach*
 .idea/
 .idea/libraries/
 *.iws

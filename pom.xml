@@ -10,14 +10,15 @@
     <packaging>pom</packaging>
     <modules>
         <module>DataModel</module>
-        <module>Controller</module>
-        <module>View</module>
+        <module>Application</module>
+        <module>Homework</module>
     </modules>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <compiler.plugin.version>3.8.0</compiler.plugin.version>
     </properties>
     <dependencies>
         <dependency>
