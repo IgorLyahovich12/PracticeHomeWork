@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 
 public class Main {
 
-private static final Logger LOGGER= LoggerFactory.getLogger("Main class");
+    private static Logger LOGGER = LoggerFactory.getLogger(Main.class);
     public static void main(String[] args) {
 
         NumberQueue<Integer> numberQueue = new NumberQueue<>();
@@ -58,7 +58,7 @@ private static final Logger LOGGER= LoggerFactory.getLogger("Main class");
                 .forEach(System.out::println);
 
 
-
+        LOGGER.debug("Some message");
     }
 
 }
