@@ -1,4 +1,4 @@
-package View;
+package org.example;
 
 
 public class QueueIsEmptyException extends Throwable {

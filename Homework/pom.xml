@@ -18,10 +18,11 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.4.12</version>
+            <groupId>org.pegdown</groupId>
+            <artifactId>pegdown</artifactId>
+            <version>1.2.1</version>
         </dependency>
+
     </dependencies>
 
 

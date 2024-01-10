@@ -7,7 +7,8 @@ import java.util.NoSuchElementException;
 
 public class Main {
 
-    private static Logger LOGGER = LoggerFactory.getLogger(Main.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
+
     public static void main(String[] args) {
 
         NumberQueue<Integer> numberQueue = new NumberQueue<>();
@@ -37,7 +38,7 @@ public class Main {
             for (Object o : numberQueue1) {
                 System.out.println(o);
             }
-        }catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             LOGGER.error("Queue not be empty");
         }
 
