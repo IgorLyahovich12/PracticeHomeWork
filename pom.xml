@@ -7,11 +7,37 @@
     <groupId>edu.igor</groupId>
     <artifactId>PracticeCourses</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>database</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
+    <dependencies>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>6.2.9.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>database</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.28</version>
+        </dependency>
+    </dependencies>
 </project>
