@@ -1,11 +1,11 @@
 package entity;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -23,8 +23,9 @@ public class Orders {
 
     @Column(name = "order_status")
     private String order_status;
+
     @ManyToOne
-    @Column(name = "product_id")
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @Column(name = "order_date")
@@ -33,5 +34,4 @@ public class Orders {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
 }

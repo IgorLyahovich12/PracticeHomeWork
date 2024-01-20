@@ -26,7 +26,7 @@ public class Categories {
     @Column(name = "name_categories")
     private String name_categories;
 
-    @Column(name = "description")
+    @Column(name = "description",length = 10000)
     private String description;
 
     @ManyToMany(mappedBy = "categories")

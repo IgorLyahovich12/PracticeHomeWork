@@ -33,16 +33,12 @@ public class Main {
 
             // Creating Categories
             Categories category1 = Categories.builder().name_categories("Computer").description( "The \"Computer\" category " +
-                    "covers a wide range of goods and services " + "related to computer equipment " +
-                    "and information technologies. This category includes goods and services that " +
                     "include a variety of computer systems, peripherals, software, " +
                     "and maintenance and support services.").build();
 
 
             Categories category2 = Categories.builder().name_categories("Appliances").description("\n" +
                     "Категорія \"Побутова Техніка\" (Appliances) включає в себе широкий асортимент побутових приладів та технічних " +
-                    "рішень, спрямованих на полегшення рутинних щоденних завдань та підвищення комфорту в домашньому середовищі. " +
-                    "У цій категорії представлені високоякісні електронні пристрої та технологічні вироби, спроектовані для вдосконалення" +
                     " різних аспектів домашнього господарювання.").build();
             Categories category3 = Categories.builder().name_categories("Products for gamers").description("These are the latest " +
                     "and most effective products to satisfy the needs of serious gamers").build();
