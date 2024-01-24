@@ -15,7 +15,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "BonusPoints")
-public class BonusPoints implements MyEntity {
+public final class BonusPoints {
     @Id
     @GeneratedValue
     @Column(name = "bonus_id")

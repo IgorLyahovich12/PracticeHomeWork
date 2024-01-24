@@ -7,7 +7,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -17,7 +16,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "Product")
-public class Product  {
+public final class Product  {
     @Id
     @GeneratedValue
     @Column(name = "product_id")
@@ -41,7 +40,7 @@ public class Product  {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "provider_id")
     )
-    private Set<Provider> providers = new LinkedHashSet<>();
+    private Set<Provider> providers ;
 
     @ManyToMany
     @JoinTable(
@@ -49,5 +48,19 @@ public class Product  {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "categories_id")
     )
-    private Set<Categories> categories = new LinkedHashSet<>();
+    private Set<Categories> categories ;
+
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL, mappedBy = "product")
+    private Set<Reviews> reviews ;
+
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL, mappedBy = "product")
+    private Set<Favorites> favorites ;
+
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL,
+            mappedBy = "product")
+    private Set<ShoppingCart> shoppingCarts;
 }
+

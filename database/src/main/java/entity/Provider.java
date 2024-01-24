@@ -1,12 +1,13 @@
 package entity;
 
 import jakarta.persistence.*;
-import lombok.*;
-import java.util.LinkedHashSet;
-import java.util.UUID;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Set;
-
-
+import java.util.UUID;
 
 @Data
 @Builder
@@ -14,7 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "Provider")
-public class Provider {
+public final class Provider {
     @Id
     @GeneratedValue
     @Column(name = "provider_id")
@@ -26,6 +27,6 @@ public class Provider {
     @Column(name = "country")
     private String country;
 
-    @ManyToMany(mappedBy = "providers")
-    private Set<Product> products = new LinkedHashSet<>();
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "providers")
+    private Set<Product> products ;
 }

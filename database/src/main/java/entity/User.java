@@ -6,8 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.Date;
-import java.util.LinkedHashSet;
+
+
+import java.time.LocalDate;
 import java.util.Set;
 import java.util.UUID;
 
@@ -17,7 +18,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "AppUser")
-public class User  {
+public final class User  {
     @Id
     @GeneratedValue
     @Column(name = "user_id")
@@ -29,26 +30,35 @@ public class User  {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "registration_date")
-    private Date Date;
+    private LocalDate Date;
 
     @Column(name = "total_purchase_amount")
     private double total_amount_buy;
 
-    @Column(name = "bonus_card")
-    private int bonus_card;
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<Favorites> favorites ;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private Set<Favorites> favorites = new LinkedHashSet<>();
-
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "bonus_id", referencedColumnName = "bonus_id")
-    private BonusPoints bonusPoints;
+    private  BonusPoints bonusPoints;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private Set<Reviews> reviews = new LinkedHashSet<>();
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<Reviews> reviews ;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private Set<Orders> orders = new LinkedHashSet<>();
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<Orders> orders ;
+
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL,
+            mappedBy = "user")
+    private Set<ShoppingCart> shoppingCarts;
 
 }

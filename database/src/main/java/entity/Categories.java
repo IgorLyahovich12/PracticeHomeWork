@@ -7,7 +7,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -17,7 +16,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "Categories")
-public class Categories {
+public final class Categories {
     @Id
     @GeneratedValue
     @Column(name = "categories_id")
@@ -29,7 +28,7 @@ public class Categories {
     @Column(name = "description",length = 10000)
     private String description;
 
-    @ManyToMany(mappedBy = "categories")
-    private Set<Product> products = new LinkedHashSet<>();
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "categories")
+    private Set<Product> products ;
 
 }
